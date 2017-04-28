@@ -1,0 +1,47 @@
+<!DOCTYPE>
+<html>
+  <head>
+    <title>Grid test</title>
+    <style>
+      body {
+        margin: 0;
+        padding: 0;
+      }
+      .container {
+        width: 100vw;
+        height: 100vh;
+        display: grid;
+        grid-template-columns: '20% 80%';
+        grid-template-rows: '64px 1fr 128px';
+        grid-template-areas:
+          "hd hd"
+          "sb mn"
+          "ft ft";
+      }
+      .header {
+        grid-area: hd;
+        background: #424242;
+      }
+      .sidebar {
+        grid-area: sb;
+        background: #757575;
+      }
+      .main {
+        grid-area: mn;
+        background: #EEEEEE;
+      }
+      .footer {
+        grid-area: ft;
+        background: #BDBDBD;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <header class="header"></header>
+      <aside class="sidebar"></aside>
+      <div class="main"></div>
+      <footer class="footer"></footer>
+    </div>
+  </body>
+</html>
