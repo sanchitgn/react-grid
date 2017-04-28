@@ -4,8 +4,21 @@ import PropTypes from 'prop-types';
 class Grid extends Component {
   static propTypes = {
     children: PropTypes.any,
+    /*
+     * [object] template
+     * columns, rows
+     */
     template: PropTypes.object,
+    /*
+     * [object] gap
+     * column, row
+     * string
+     */
     gap: PropTypes.object,
+    /*
+     * [string] Refer to grid-area property of children
+     */
+    templateAreas: PropTypes.string
   }
 
   static defaultProps = {

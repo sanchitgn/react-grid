@@ -1,12 +1,22 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 
-
-class GridItem extends Component {
+class Cell extends Component {
   static propTypes = {
     children: PropTypes.any,
+
+    /* Layout will be determined by specificity
+     * [object] layout
+     *   colStart, rowStart, colEnd, rowEnd
+     *   column, row
+     *   area
+     */
     layout: PropTypes.object,
     zIndex: PropTypes.number,
+    /*
+     * [string] Grid area name
+     */
+     name: PropTypes.string,
   }
 
   static defaulProps = {
@@ -42,4 +52,4 @@ class GridItem extends Component {
   }
 }
 
-export default GridItem;
+export default Cell;
