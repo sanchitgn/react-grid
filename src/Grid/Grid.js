@@ -33,7 +33,7 @@ class Grid extends Component {
 
   render () {
     return (
-      <div style={this.getStyles()}>
+      <div style={this.getStyles()} {...this.props}>
         {this.props.children}
       </div>
     );

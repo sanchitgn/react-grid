@@ -19,7 +19,7 @@ class GridItem extends Component {
     const { column, row } = this.props;
 
     const styles = {
-      background: '#9e9e9e',
+      border: '1px solid #9e9e9e',
       gridRow: row,
       gridColumn: column,
     }
@@ -29,7 +29,7 @@ class GridItem extends Component {
 
   render () {
     return (
-      <div style={this.getStyles()}>
+      <div style={this.getStyles()} {...this.props}>
         {this.props.children}
       </div>
     );
