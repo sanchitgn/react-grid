@@ -5,8 +5,13 @@ import PropTypes from 'prop-types';
 class GridItem extends Component {
   static propTypes = {
     children: PropTypes.any,
-    column: PropTypes.string,
-    row: PropTypes.string,
+    layout: PropTypes.object,
+    zIndex: PropTypes.number,
+  }
+
+  static defaulProps = {
+    layout: null,
+    zIndex: 1,
   }
 
   constructor () {
@@ -16,12 +21,13 @@ class GridItem extends Component {
   }
 
   getStyles () {
-    const { column, row } = this.props;
+    const { layout: { column, row }, zIndex } = this.props;
 
     const styles = {
-      border: '1px solid #9e9e9e',
+      border: '1px solid #9e9e9e', // DEV
       gridRow: row,
       gridColumn: column,
+      zIndex,
     }
 
     return styles;
@@ -29,7 +35,7 @@ class GridItem extends Component {
 
   render () {
     return (
-      <div style={this.getStyles()} {...this.props}>
+      <div style={this.getStyles()}>
         {this.props.children}
       </div>
     );
