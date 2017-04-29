@@ -3,7 +3,9 @@ import PropTypes from 'prop-types';
 
 class Cell extends Component {
   static propTypes = {
-    children: PropTypes.any,
+    children: PropTypes.node,
+
+    className: PropTypes.string,
 
     /* Layout will be determined by specificity
      * [object] layout
@@ -13,10 +15,17 @@ class Cell extends Component {
      */
     layout: PropTypes.object,
     zIndex: PropTypes.number,
+    
     /*
      * [string] Grid area name
      */
      name: PropTypes.string,
+
+     /*
+      * Overrides paren alignment
+      */
+      justifySelf: PropTypes.string,
+      alignSelf: PropTypes.string,
   }
 
   static defaulProps = {

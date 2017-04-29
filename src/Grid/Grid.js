@@ -3,22 +3,46 @@ import PropTypes from 'prop-types';
 
 class Grid extends Component {
   static propTypes = {
-    children: PropTypes.any,
+    children: PropTypes.node,
+
+    className: PropTypes.string,
+    
     /*
      * [object] template
      * columns, rows
      */
     template: PropTypes.object,
+    
     /*
      * [object] gap
      * column, row
      * string
      */
     gap: PropTypes.object,
+    
     /*
      * [string] Refer to grid-area property of children
      */
-    templateAreas: PropTypes.string
+    templateAreas: PropTypes.string,
+    
+    /*
+     * Controls how auto-placement algorithm works
+     */
+    autoFlow: PropTypes.string,
+
+    /*
+     * Sets minimum row, column sizes
+     */
+    autoRows: PropTypes.string,
+    autoColumns: PropTypes.string,
+
+    /*
+     * Sets children alignment
+     */
+    justifyContent: PropTypes.string,
+    justifyItems: PropTypes.string,
+    alignContent: PropTypes.string,
+    alignItems: PropTypes.string,
   }
 
   static defaultProps = {
