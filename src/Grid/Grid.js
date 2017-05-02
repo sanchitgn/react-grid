@@ -5,24 +5,19 @@ import { GLOBAL_CSS_VALUES, ALIGN_VALUES, SPACE_VALUES } from './constants';
 class Grid extends Component {
   static propTypes = {
     children: PropTypes.node,
-
     className: PropTypes.string,
-    
     /*
      * { columns, rows }
      */
     template: PropTypes.object,
-    
     /*
      * { column, row }
      */
     gap: PropTypes.object,
-    
     /*
      * Refer to grid-area property of children
      */
     templateAreas: PropTypes.string,
-    
     /*
      * Controls how auto-placement algorithm works
      */
@@ -34,13 +29,11 @@ class Grid extends Component {
       'column dense',
       ...GLOBAL_CSS_VALUES
     ]),
-
     /*
      * Sets minimum row, column sizes
      */
     autoRows: PropTypes.string,
     autoColumns: PropTypes.string,
-
     /*
      * Sets children alignment
      */

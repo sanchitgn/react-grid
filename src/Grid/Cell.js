@@ -1,12 +1,11 @@
 import React, { Component } from "react";
 import PropTypes from "prop-types";
+import { ALIGN_VALUES } from "./constants";
 
 class Cell extends Component {
   static propTypes = {
     children: PropTypes.node,
-
     className: PropTypes.string,
-
     /* 
      * Layout will be determined by specificity
      * [object] layout
@@ -16,23 +15,21 @@ class Cell extends Component {
      */
     layout: PropTypes.object,
     zIndex: PropTypes.number,
-
     /*
      * [string] Grid area name
      */
     name: PropTypes.string,
-
     /*
-      * Overrides paren alignment
-      */
-    justifySelf: PropTypes.string,
-    alignSelf: PropTypes.string
+     * Overrides paren alignment
+     */
+    justifySelf: PropTypes.oneOf(ALIGN_VALUES),
+    alignSelf: PropTypes.oneOf(ALIGN_VALUES)
   };
 
   static defaultProps = {
-    className: 'cell',
+    className: "cell",
     layout: null,
-    zIndex: 1,
+    zIndex: 1
   };
 
   constructor() {
@@ -47,7 +44,7 @@ class Cell extends Component {
     const styles = {
       gridRow: row,
       gridColumn: column,
-      zIndex,
+      zIndex
     };
 
     return styles;
