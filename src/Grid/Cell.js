@@ -44,7 +44,6 @@ class Cell extends Component {
     const { layout: { column, row }, zIndex } = this.props;
 
     const styles = {
-      border: "1px solid #9e9e9e", // DEV
       gridRow: row,
       gridColumn: column,
       zIndex
