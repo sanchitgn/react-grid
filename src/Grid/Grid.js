@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
-import { GLOBAL_CSS_VALUES, ALIGN_VALUES, SPACE_VALUES } from './constants';
+import { GLOBAL_CSS_VALUES, ALIGN_ITEMS_VALUES, ALIGN_CONTENT_VALUES } from './constants';
 
 class Grid extends Component {
   static propTypes = {
@@ -30,23 +30,17 @@ class Grid extends Component {
       ...GLOBAL_CSS_VALUES
     ]),
     /*
-     * Sets minimum row, column sizes
+     * Defines minimum row, column sizes
      */
     autoRows: PropTypes.string,
     autoColumns: PropTypes.string,
     /*
-     * Sets children alignment
+     * Defines children alignment
      */
-    justifyContent: PropTypes.oneOf([
-      ...ALIGN_VALUES,
-      ...SPACE_VALUES,
-    ]),
-    justifyItems: PropTypes.oneOf(ALIGN_VALUES),
-    alignContent: PropTypes.oneOf([
-      ...ALIGN_VALUES,
-      ...SPACE_VALUES,
-    ]),
-    alignItems: PropTypes.oneOf(ALIGN_VALUES),
+    justifyContent: PropTypes.oneOf(ALIGN_CONTENT_VALUES),
+    justifyItems: PropTypes.oneOf(ALIGN_ITEMS_VALUES),
+    alignContent: PropTypes.oneOf(ALIGN_CONTENT_VALUES),
+    alignItems: PropTypes.oneOf(ALIGN_ITEMS_VALUES),
   }
 
   static defaultProps = {

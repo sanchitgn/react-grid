@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import PropTypes from "prop-types";
-import { ALIGN_VALUES } from "./constants";
+import { ALIGN_ITEMS_VALUES } from "./constants";
 
 class Cell extends Component {
   static propTypes = {
@@ -22,8 +22,8 @@ class Cell extends Component {
     /*
      * Overrides paren alignment
      */
-    justifySelf: PropTypes.oneOf(ALIGN_VALUES),
-    alignSelf: PropTypes.oneOf(ALIGN_VALUES)
+    justifySelf: PropTypes.oneOf(ALIGN_ITEMS_VALUES),
+    alignSelf: PropTypes.oneOf(ALIGN_ITEMS_VALUES)
   };
 
   static defaultProps = {
