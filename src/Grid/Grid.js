@@ -91,9 +91,11 @@ class Grid extends Component {
   }
 
   render () {
+    const { className, children } = this.props;
+
     return (
-      <div style={this.getStyles()}>
-        {this.props.children}
+      <div className={className} style={this.getStyles()}>
+        {children}
       </div>
     );
   }

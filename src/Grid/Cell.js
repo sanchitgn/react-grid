@@ -29,9 +29,10 @@ class Cell extends Component {
     alignSelf: PropTypes.string
   };
 
-  static defaulProps = {
+  static defaultProps = {
+    className: 'cell',
     layout: null,
-    zIndex: 1
+    zIndex: 1,
   };
 
   constructor() {
@@ -46,16 +47,18 @@ class Cell extends Component {
     const styles = {
       gridRow: row,
       gridColumn: column,
-      zIndex
+      zIndex,
     };
 
     return styles;
   }
 
   render() {
+    const { className, children } = this.props;
+
     return (
-      <div style={this.getStyles()}>
-        {this.props.children}
+      <div className={className} style={this.getStyles()}>
+        {children}
       </div>
     );
   }
