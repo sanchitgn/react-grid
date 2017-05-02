@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
+import { GLOBAL_CSS_VALUES, ALIGN_VALUES, SPACE_VALUES } from './constants';
 
 class Grid extends Component {
   static propTypes = {
@@ -8,27 +9,31 @@ class Grid extends Component {
     className: PropTypes.string,
     
     /*
-     * [object] template
-     * columns, rows
+     * { columns, rows }
      */
     template: PropTypes.object,
     
     /*
-     * [object] gap
-     * column, row
-     * string
+     * { column, row }
      */
     gap: PropTypes.object,
     
     /*
-     * [string] Refer to grid-area property of children
+     * Refer to grid-area property of children
      */
     templateAreas: PropTypes.string,
     
     /*
      * Controls how auto-placement algorithm works
      */
-    autoFlow: PropTypes.string,
+    autoFlow: PropTypes.oneOf([
+      'row',
+      'column',
+      'dense',
+      'row dense',
+      'column dense',
+      ...GLOBAL_CSS_VALUES
+    ]),
 
     /*
      * Sets minimum row, column sizes
@@ -39,20 +44,28 @@ class Grid extends Component {
     /*
      * Sets children alignment
      */
-    justifyContent: PropTypes.string,
-    justifyItems: PropTypes.string,
-    alignContent: PropTypes.string,
-    alignItems: PropTypes.string,
+    justifyContent: PropTypes.oneOf([
+      ...ALIGN_VALUES,
+      ...SPACE_VALUES,
+    ]),
+    justifyItems: PropTypes.oneOf(ALIGN_VALUES),
+    alignContent: PropTypes.oneOf([
+      ...ALIGN_VALUES,
+      ...SPACE_VALUES,
+    ]),
+    alignItems: PropTypes.oneOf(ALIGN_VALUES),
   }
 
   static defaultProps = {
+    className: 'grid',
+    /*
+     * Defaults to 12 column grid
+     */
     template: {
-      column: 'repeat(12, 1fr)', // 12 column grid
+      column: 'repeat(12, 1fr)',
     },
-    gap: {
-      column: '4px',
-      row: '8px',
-    },
+    autoFlow: 'row',
+    gap: {},
   }
 
   constructor () {
