@@ -60,6 +60,8 @@ class Cell extends Component {
     const layoutStyles = this.getLayout();
 
     const styles = {
+      width: '100%',
+      height: '100%',
       zIndex,
       justifySelf, 
       alignSelf,

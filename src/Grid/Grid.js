@@ -1,6 +1,10 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
-import { GLOBAL_CSS_VALUES, ALIGN_ITEMS_VALUES, ALIGN_CONTENT_VALUES } from './constants';
+import {
+  GLOBAL_CSS_VALUES,
+  ALIGN_ITEMS_VALUES,
+  ALIGN_CONTENT_VALUES,
+} from './constants';
 
 class Grid extends Component {
   static propTypes = {
@@ -27,7 +31,7 @@ class Grid extends Component {
       'dense',
       'row dense',
       'column dense',
-      ...GLOBAL_CSS_VALUES
+      ...GLOBAL_CSS_VALUES,
     ]),
     /*
      * Defines minimum row, column sizes
@@ -41,7 +45,7 @@ class Grid extends Component {
     justifyItems: PropTypes.oneOf(ALIGN_ITEMS_VALUES),
     alignContent: PropTypes.oneOf(ALIGN_CONTENT_VALUES),
     alignItems: PropTypes.oneOf(ALIGN_ITEMS_VALUES),
-  }
+  };
 
   static defaultProps = {
     className: 'grid',
@@ -53,31 +57,52 @@ class Grid extends Component {
     },
     autoFlow: 'row',
     gap: {},
-  }
+    justifyContent: 'start',
+    justifyItems: 'start',
+    alignContent: 'start',
+    alignItems: 'start',
+  };
 
-  constructor () {
+  constructor() {
     super();
 
     this.getStyles = this.getStyles.bind(this);
   }
 
-  getStyles () {
-    const { template, gap } = this.props;
-    
+  getStyles() {
+    const {
+      template,
+      gap,
+      justifyContent,
+      justifyItems,
+      alignContent,
+      alignItems,
+      autoFlow,
+      autoRows,
+      autoColumns,
+    } = this.props;
+
     const styles = {
       display: 'grid',
       width: '100%',
       height: '100%',
+      justifyContent,
+      justifyItems,
+      alignContent,
+      alignItems,
       gridTemplateColumns: template.column,
       gridTemplateRows: template.row,
       gridRowGap: gap.row,
       gridColumnGap: gap.column,
+      gridAutoFlow: autoFlow,
+      gridAutoColumns: autoColumns,
+      gridAutoRows: autoRows,
     };
 
     return styles;
   }
 
-  render () {
+  render() {
     const { className, children } = this.props;
 
     return (
