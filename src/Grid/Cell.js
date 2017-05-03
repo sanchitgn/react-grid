@@ -1,6 +1,6 @@
-import React, { Component } from "react";
-import PropTypes from "prop-types";
-import { ALIGN_ITEMS_VALUES } from "./constants";
+import React, { Component } from 'react';
+import PropTypes from 'prop-types';
+import { ALIGN_ITEMS_VALUES } from './constants';
 
 class Cell extends Component {
   static propTypes = {
@@ -23,28 +23,47 @@ class Cell extends Component {
      * Overrides paren alignment
      */
     justifySelf: PropTypes.oneOf(ALIGN_ITEMS_VALUES),
-    alignSelf: PropTypes.oneOf(ALIGN_ITEMS_VALUES)
+    alignSelf: PropTypes.oneOf(ALIGN_ITEMS_VALUES),
   };
 
   static defaultProps = {
-    className: "cell",
-    layout: null,
-    zIndex: 1
+    className: 'cell',
+    layout: {},
+    zIndex: 1,
+    justifySelf: 'start',
+    alignSelf: 'start',
   };
 
   constructor() {
     super();
 
     this.getStyles = this.getStyles.bind(this);
+    this.getLayout = this.getLayout.bind(this);
+  }
+
+  getLayout() {
+    const { layout } = this.props;
+
+    return {
+      gridRow: layout.row,
+      gridColumn: layout.column,
+    }
   }
 
   getStyles() {
-    const { layout: { column, row }, zIndex } = this.props;
+    const {
+      zIndex,
+      justifySelf,
+      alignSelf,
+    } = this.props;
+
+    const layoutStyles = this.getLayout();
 
     const styles = {
-      gridRow: row,
-      gridColumn: column,
-      zIndex
+      zIndex,
+      justifySelf, 
+      alignSelf,
+      ...layoutStyles,
     };
 
     return styles;
