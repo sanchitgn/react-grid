@@ -16,11 +16,7 @@ class Cell extends Component {
     layout: PropTypes.object,
     zIndex: PropTypes.number,
     /*
-     * [string] Grid area name
-     */
-    name: PropTypes.string,
-    /*
-     * Overrides paren alignment
+     * Overrides parent alignment
      */
     justifySelf: PropTypes.oneOf(ALIGN_ITEMS_VALUES),
     alignSelf: PropTypes.oneOf(ALIGN_ITEMS_VALUES),
@@ -41,21 +37,23 @@ class Cell extends Component {
     this.getLayout = this.getLayout.bind(this);
   }
 
+  /**
+   * Defines layout based on layout prop
+   * 
+   * @returns layout styles
+   * 
+   */
   getLayout() {
     const { layout } = this.props;
 
     return {
-      gridRow: layout.row,
       gridColumn: layout.column,
-    }
+      gridRow: layout.row,
+    };
   }
 
   getStyles() {
-    const {
-      zIndex,
-      justifySelf,
-      alignSelf,
-    } = this.props;
+    const { zIndex, justifySelf, alignSelf } = this.props;
 
     const layoutStyles = this.getLayout();
 
@@ -63,7 +61,7 @@ class Cell extends Component {
       width: '100%',
       height: '100%',
       zIndex,
-      justifySelf, 
+      justifySelf,
       alignSelf,
       ...layoutStyles,
     };
