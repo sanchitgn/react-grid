@@ -16,9 +16,9 @@ class App extends Component {
     return (
       <div style={{width: '100vw', height: '100vh'}}>
         <Grid template={{ column: '20% 60% 20%', row: '64px 1fr' }}>
-          <Cell layout={{ column: '1 / 4' }}><Content>Toolbar</Content></Cell>
-          <Cell layout={{ column: '1 / 2' }}><Content>Sidebar</Content></Cell> 
-          <Cell layout={{ column: '2 / 4' }}><Content>Main</Content></Cell>
+          <Cell layout={{ column: '1 / span 3' }}><Content>Toolbar</Content></Cell>
+          <Cell layout={{ column: '1 / span 1' }}><Content>Sidebar</Content></Cell>
+          <Cell layout={{ column: '2 / span 2' }}><Content>Main</Content></Cell>
         </Grid>
       </div>
     );

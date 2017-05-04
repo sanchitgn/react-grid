@@ -2,6 +2,16 @@ import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { ALIGN_ITEMS_VALUES } from './constants';
 
+const mapProperty = {
+    area: 'gridArea',
+    column: 'gridColumn',
+    row: 'gridRow',
+    colStart: 'gridColumnStart',
+    colEnd: 'gridColumnEnd',
+    rowStart: 'gridRowStart',
+    rowEnd: 'gridRowEnd',
+  };
+
 class Cell extends Component {
   static propTypes = {
     children: PropTypes.node,
@@ -46,10 +56,16 @@ class Cell extends Component {
   getLayout() {
     const { layout } = this.props;
 
-    return {
-      gridColumn: layout.column,
-      gridRow: layout.row,
-    };
+    const _layout = Object.keys(layout).reduce((style, key) => {
+      if(layout[key]) {
+        style[mapProperty[key]] = layout[key];
+      }
+      return style;
+    }, {});
+
+    console.log(_layout);
+
+    return _layout;
   }
 
   getStyles() {
